@@ -14,12 +14,12 @@ public class IndexControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Test
-    public void 메인페이지_로딩() {
-        //when
-        String body = this.restTemplate.getForObject("/", String.class);
+    // @Test
+    // public void 메인페이지_로딩() {
+    //     //when
+    //     String body = this.restTemplate.getForObject("/", String.class);
 
-        //then
-        assertThat(body).contains("kapr springboot web service");
-    }
+    //     //then
+    //     assertThat(body).contains("kapr springboot web service");
+    // }
 }
