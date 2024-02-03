@@ -1,12 +1,14 @@
 package com.example.planner.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.planner.service.PostsService;
+import com.example.planner.web.dto.PostsResponseDto;
+
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
@@ -25,5 +27,11 @@ public class IndexController {
         return "posts-save";
     }
     
+    @GetMapping("/posts/update/{id}")
+    public String postsUpdate(@PathVariable(name = "id") Long postId, Model model) {
+        PostsResponseDto dto = postsService.findById(postId);
+        model.addAttribute("post", dto);
 
+        return "posts-update";
+    }
 }

@@ -24,6 +24,20 @@ public class PostsService {
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
+    @Transactional
+    public Long update(Long id, PostsUpdateRequestDto requestDto) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        // Posts 엔티티의 update 메서드를 사용하여 데이터 업데이트
+        posts.update(requestDto.getTitle(), requestDto.getContent());
+
+        // save 메서드로 업데이트 내용 저장
+        postsRepository.save(posts);
+
+        return id;
+    }
+
     @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc() {
         return postsRepository.findAllDesc().stream()

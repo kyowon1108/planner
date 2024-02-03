@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### ignore files ###
+/src/main/java/com/example/planner/config/secret
