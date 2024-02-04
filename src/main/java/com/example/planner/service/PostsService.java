@@ -27,15 +27,19 @@ public class PostsService {
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto) {
         Posts posts = postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 
-        // Posts 엔티티의 update 메서드를 사용하여 데이터 업데이트
         posts.update(requestDto.getTitle(), requestDto.getContent());
 
-        // save 메서드로 업데이트 내용 저장
-        postsRepository.save(posts);
-
         return id;
+    }
+
+    @Transactional
+    public void delete (Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+
+        postsRepository.delete(posts);
     }
 
     @Transactional(readOnly = true)

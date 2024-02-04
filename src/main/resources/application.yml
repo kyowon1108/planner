@@ -1,0 +1,18 @@
+spring:
+  h2:
+    console:
+      enabled: 'true'
+      settings:
+        web-allow-others: 'true'
+  mustache:
+    check-template-location: 'true'
+  datasource:
+    url: jdbc:h2:mem:testdb
+  jpa:
+    show-sql: 'true'
+
+server:
+  servlet:
+    encoding:
+      force-response: 'true'
+  port: '5002'
