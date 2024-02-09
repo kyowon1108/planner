@@ -38,3 +38,4 @@ out/
 
 ### ignore files ###
 /src/main/java/com/example/planner/config/secret
+application-oauth.properties

@@ -1,4 +1,4 @@
-package com.example.planner.domain.posts;
+package com.example.planner.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
